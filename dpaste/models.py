@@ -83,8 +83,8 @@ class Snippet(models.Model):
         return reverse('snippet_details', kwargs={'snippet_id': self.secret_id})
 
     def highlight(self):
-        HighlighterClass = highlight.get_highlighter_class(self.lexer)
-        return HighlighterClass().render(self.content, self.lexer)
+        highlighter_class = highlight.get_highlighter_class(self.lexer)
+        return highlighter_class().render(self.content, self.lexer)
 
     @property
     def lexer_name(self):
